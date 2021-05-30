@@ -4,7 +4,7 @@ import useDarkMode from '../../hooks/useDarkMode'
 import useLanguage from '../../hooks/useLanguage';
 // custom components
 import Header from '../Header'; // contains theme toggle
-import LoadingPage from '../LoadingPage';
+// import LoadingPage from '../LoadingPage';
 // CSS constants
 import { lightTheme, darkTheme } from "./Themes"
 
