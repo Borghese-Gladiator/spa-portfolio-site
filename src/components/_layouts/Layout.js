@@ -1,6 +1,7 @@
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 // custom hooks
-import useDarkMode from "../../hooks/useDarkMode"
+import useDarkMode from '../../hooks/useDarkMode'
+import useLanguage from '../../hooks/useLanguage';
 // custom components
 import Navbar from '../Navbar'; // contains theme toggle
 import LoadingPage from '../LoadingPage';
@@ -18,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Layout = ({ children }) => {
   const [theme, toggleTheme, mountedComponent] = useDarkMode();
+  const [lang, setLang] = useLanguage();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   if (!mountedComponent) return <LoadingPage />
@@ -26,7 +28,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <Navbar theme={theme} toggleTheme={toggleTheme} lang={lang} setLang={setLang} />
         <main>
           {children}        
         </main>
