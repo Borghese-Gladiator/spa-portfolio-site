@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
   const [lang, setLang] = useLanguage();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
-  if (!mountedComponent) return <LoadingPage />
+  if (!mountedComponent) return <div />
 
   return (
     <ThemeProvider theme={themeMode}>
