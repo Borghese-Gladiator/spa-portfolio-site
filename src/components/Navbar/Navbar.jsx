@@ -1,32 +1,83 @@
-import styles from './Navbar.module.css';
+import styled from 'styled-components';
 import PropTypes from "prop-types";
+import { BiSun, BiMoon } from 'react-icons/bi';
+import { HiOutlineTranslate } from 'react-icons/hi';
 
-const Toggle = ({ theme, toggleTheme }) => {
+const IconButton = styled.button`
+  color: inherit; /* ensure button inherits theme color */
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transform: perspective(1px) translateZ(0);
+  transition-property: color;
+  transition-duration: 0.3s;
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+`
+
+const ToggleDarkMode = ({ theme, toggleTheme }) => {
   return (
-    <label>
-      <input
-        type="checkbox"
-        onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
-        checked={theme === 'dark'}
-      />{' '}Dark mode</label>
+    <IconButton onClick={e => toggleTheme(e.target.checked ? 'dark' : 'light')}>
+      {
+        theme === "dark"
+        ? <BiSun style={{fontSize: 30}} />
+        : <BiMoon style={{fontSize: 30}} />
+      }
+    </IconButton>
   )
 }
-Toggle.propTypes = {
+ToggleDarkMode.propTypes = {
   theme: PropTypes.string.isRequired,
   toggleTheme: PropTypes.func.isRequired,
 }
 
-const Navbar = ({ theme, toggleTheme }) => {
+const ToggleLanguageDropdown = ({ lang, setLang }) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.grow} />
-      <ul className={styles.navbar}>
-        <li><a href="#top">Top</a></li>
-        <li><a href="#bottom">Bottom</a></li>
-        <li><a target="_blank" rel="noopener noreferrer" href="https://dev.to/" >Blog</a></li>
-      </ul>
-      <Toggle theme={theme} toggleTheme={toggleTheme} />
-    </div>
+    <IconButton>
+      <HiOutlineTranslate style={{fontSize: 30}} />
+    </IconButton>
+  )
+}
+ToggleLanguageDropdown.propTypes = {
+  lang: PropTypes.string.isRequired,
+  setLang: PropTypes.func.isRequired,
+}
+
+const StyledHeader = styled.div`
+  display: flex;
+  background: ${({ theme }) => theme.headerColor};
+  border-color: 2px solid ${({ theme }) => theme.headerColor};
+`;
+const FlexGrow = styled.div`
+  flex: 1
+`
+const StyledList = styled.div`
+  display: flex;
+  align-items: center;
+  /* Remove ul styling */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  > li {
+    margin: 5px;
+  }
+`
+const Navbar = ({ theme, toggleTheme, lang, setLang }) => {
+  return (
+    <StyledHeader>
+      <FlexGrow />
+      <StyledList>
+        <li><ToggleDarkMode theme={theme} toggleTheme={toggleTheme} /></li>
+        <li><ToggleLanguageDropdown lang={lang} setLang={setLang} /></li>
+      </StyledList>
+    </StyledHeader>
   )
 }
 
