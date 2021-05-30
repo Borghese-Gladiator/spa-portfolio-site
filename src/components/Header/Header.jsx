@@ -69,7 +69,7 @@ const StyledList = styled.div`
     margin: 5px;
   }
 `
-const Navbar = ({ theme, toggleTheme, lang, setLang }) => {
+const Header = ({ theme, toggleTheme, lang, setLang }) => {
   return (
     <StyledHeader>
       <FlexGrow />
@@ -81,9 +81,9 @@ const Navbar = ({ theme, toggleTheme, lang, setLang }) => {
   )
 }
 
-Navbar.propTypes = {
+Header.propTypes = {
   theme: PropTypes.string.isRequired,
   toggleTheme: PropTypes.func.isRequired,
 }
 
-export default Navbar;
+export default Header;

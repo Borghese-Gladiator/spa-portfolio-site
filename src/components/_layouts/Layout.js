@@ -3,7 +3,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 import useDarkMode from '../../hooks/useDarkMode'
 import useLanguage from '../../hooks/useLanguage';
 // custom components
-import Navbar from '../Navbar'; // contains theme toggle
+import Header from '../Header'; // contains theme toggle
 import LoadingPage from '../LoadingPage';
 // CSS constants
 import { lightTheme, darkTheme } from "./Themes"
@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
-        <Navbar theme={theme} toggleTheme={toggleTheme} lang={lang} setLang={setLang} />
+        <Header theme={theme} toggleTheme={toggleTheme} lang={lang} setLang={setLang} />
         <main>
           {children}        
         </main>
