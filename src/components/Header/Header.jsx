@@ -53,7 +53,7 @@ ToggleLanguageDropdown.propTypes = {
 const StyledHeader = styled.div`
   display: flex;
   background: ${({ theme }) => theme.headerColor};
-  border-color: 2px solid ${({ theme }) => theme.headerColor};
+  border: 2px solid ${({ theme }) => theme.headerColor};
 `;
 const FlexGrow = styled.div`
   flex: 1
@@ -72,6 +72,7 @@ const StyledList = styled.div`
 const Header = ({ theme, toggleTheme, lang, setLang }) => {
   return (
     <StyledHeader>
+      <h1>TIMOTHY SHEE</h1>
       <FlexGrow />
       <StyledList>
         <li><ToggleDarkMode theme={theme} toggleTheme={toggleTheme} /></li>
