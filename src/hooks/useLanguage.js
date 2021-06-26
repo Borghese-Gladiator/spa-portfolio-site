@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useLanguage = () => {
-  const defaultLang = window.navigator.userLanguage || window.navigator.language;
+  const defaultLang = (window.navigator.userLanguage || window.navigator.language).slice(0, 2);
   const [lang, setLang] = useState(defaultLang);
 
   const setLangMode = mode => {
@@ -11,7 +11,7 @@ const useLanguage = () => {
 
   useEffect(() => {
     const localLang = window.localStorage.getItem('lang');
-    localLang ? setLang(localLang) : setLangMode('light')
+    localLang ? setLang(localLang) : setLangMode('en');
   }, []);
 
   return [lang, setLangMode]
