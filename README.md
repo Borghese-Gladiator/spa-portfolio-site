@@ -1,3 +1,9 @@
+## Portfolio Site
+React + Bulma CSS SPA (Single Page Application) website
+
+## Methodology
+I wrote a new portfolio site since my old portfolio site was written 2 years ago with extensive hard coding.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
